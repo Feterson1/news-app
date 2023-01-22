@@ -27,12 +27,14 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input{
+  margin-top: 10px;
+  font-size: 20pt;
+}
+button{
+  padding: 10px;
+  background: #61dafb;
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
 }
