@@ -8,3 +8,11 @@ export const getArticlesByWord = async (word) =>{
 
    return data;
 }
+
+export const getArticleByTag = async (tag) =>{
+
+   const data = await axios.get(`https://content.guardianapis.com/search?tag=${tag}&api-key=${API_KEY}`,{
+      withCredentials:false,
+   })
+   return data;
+}
