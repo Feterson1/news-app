@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import '../../App.css';
 import { getArticlesByWord } from '../../api';
+import NewsInfo from '../NewsInfo/NewsInfo';
 
 
 
@@ -8,6 +9,7 @@ const MainPage = (props) => {
 
     const [articles, setArticles] = useState([]);
   const [searchWord, setSearchWord] = useState('');
+  const [searchActive,setSearchActive] = useState(false);
 
 
   useEffect(() => {
@@ -18,6 +20,14 @@ const MainPage = (props) => {
 
   }, []);
 
+  useEffect(()=>{
+    if(searchWord === ''){
+      setSearchActive(false);
+    }
+      
+
+  },[searchWord])
+
 
 
   const getData = async (word) => {
@@ -27,11 +37,31 @@ const MainPage = (props) => {
   }
 
   const inputHandler = (e) => {
-    setSearchWord(e.target.value);
+    if(e.target.value !== null){
+      setSearchWord(e.target.value);
+      
+    }else{
+      setSearchWord(null);
+      
+    }
+    
   }
   const buttonHandler = (e) => {
-    getData(searchWord);
+    if(searchWord !== ''){
+      getData(searchWord);
+      setSearchActive(true);
 
+    }else{
+      setSearchActive(false);
+    }
+  }
+  const searchFunc = (article) =>{
+
+    if(searchActive === true){
+      return <NewsInfo article={article} isSearchPage = {true} searchWord = {searchWord}/>
+    }else{
+      return null;
+    }
   }
 
 
@@ -45,16 +75,7 @@ const MainPage = (props) => {
 
        
         {articles.map(article => {
-          return (
-            <p key={article.id}>
-              <a href={article.webUrl}>
-                {article.webTitle.split(searchWord)[0]}
-                <span style={{ backgroundColor: 'Yellow' }}>{searchWord}</span>
-                {article.webTitle.split(searchWord)[1]}
-              </a>
-            </p>
-
-          )
+          return (searchFunc(article))
         })}
 
         </div>

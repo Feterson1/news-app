@@ -22,7 +22,7 @@ const Sport = (props) => {
 
 
     return (
-        <div>
+        <div className="Wrapper">
             <h1>Sport</h1>
             {articles.map(article => {
                return <NewsInfo article ={article}/>

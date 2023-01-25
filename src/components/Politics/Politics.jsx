@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getArticleByTag } from "../../api";
 import NewsInfo from "../NewsInfo/NewsInfo";
+import Wrapper from "../Wrapper/Wrapper";
 
 
 
@@ -23,13 +24,13 @@ const Politics = (props) => {
 
 
     return (
-        <div>
+        <Wrapper apiRequest ={'politics/politics'} setArticles = {setArticles} >
             <h1>Politics</h1>
             {articles.map(article => {
                 return <NewsInfo article ={article}/>
             })}
 
-        </div>
+        </Wrapper>
     )
 
 }

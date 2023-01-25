@@ -22,7 +22,7 @@ const Media = (props) => {
 
 
     return (
-        <div>
+        <div className="Wrapper">
             <h1>Media</h1>
             {articles.map(article => {
                 return <NewsInfo article ={article}/>

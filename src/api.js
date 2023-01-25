@@ -9,9 +9,9 @@ export const getArticlesByWord = async (word) =>{
    return data;
 }
 
-export const getArticleByTag = async (tag) =>{
+export const getArticleByTag = async (tag,page ='1') =>{
 
-   const data = await axios.get(`https://content.guardianapis.com/search?tag=${tag}&api-key=${API_KEY}`,{
+   const data = await axios.get(`https://content.guardianapis.com/search?tag=${tag}&page=${page}&api-key=${API_KEY}`,{
       withCredentials:false,
    })
    return data;

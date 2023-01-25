@@ -23,7 +23,7 @@ const Economy = (props) => {
 
 
     return (
-        <div>
+        <div className="Wrapper">
             <h1>Economy</h1>
             {articles.map(article => {
                return <NewsInfo article ={article}/>
